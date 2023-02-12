@@ -22,6 +22,10 @@ body {
   margin: 0 auto;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .header {
   margin-bottom: 4rem;
   display: flex;
