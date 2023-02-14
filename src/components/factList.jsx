@@ -34,14 +34,20 @@ const initialFacts = [
   },
 ];
 
-const FactList = (props) => (
-  <section>
-    <ul className="facts-list">
-      {initialFacts.map((fact) => (
-        <Fact key={fact.id} fact={fact}></Fact>
-      ))}
-    </ul>
-  </section>
-);
+const FactList = (props) => {
+  const facts = initialFacts;
+  const numberOfFacts = facts.length;
+
+  return (
+    <section>
+      <ul className="facts-list">
+        {initialFacts.map((fact) => (
+          <Fact key={fact.id} fact={fact}></Fact>
+        ))}
+      </ul>
+      <p>There are {numberOfFacts} in the database. Add your own!</p>
+    </section>
+  );
+};
 
 export default FactList;
