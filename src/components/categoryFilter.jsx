@@ -13,6 +13,9 @@ const CategoryFilter = (props) => {
   return (
     <aside>
       <ul>
+        <li className="category">
+          <button className="btn btn-all-categories">All</button>
+        </li>
         {CATEGORIES.map((category) => (
           <li key={category.color} className="category">
             <button
