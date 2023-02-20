@@ -215,6 +215,10 @@ ul {
 }
 
 @media (max-width: 62.5em) {
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   html {
     font-size: 60%;
   }
