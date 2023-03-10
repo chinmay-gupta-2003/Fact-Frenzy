@@ -332,7 +332,7 @@ ul {
     font-size: 48%;
   }
 
-  .logo-img {
+  .logo img {
     width: 4.8rem;
     height: 4.8rem;
   }
@@ -348,5 +348,19 @@ ul {
 
   .wrapper {
     width: 88%;
+  }
+}
+
+@media (max-width: 23em) {
+  body {
+    padding: 3.2rem;
+  }
+
+  .btn-large {
+    padding: 2rem 3rem;
+  }
+
+  .tag {
+    padding-bottom: 0.3rem;
   }
 }
