@@ -97,6 +97,7 @@ const HomePage = () => {
             currentCategory={currentCategory}
             factList={factList}
             setFactList={setFactList}
+            user={user}
           />
         )}
       </main>

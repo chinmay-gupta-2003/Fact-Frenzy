@@ -9,6 +9,7 @@ const Fact = (props) => {
     fact.votesFalse > fact.votesInteresting + fact.votesMindblowing;
 
   const handleAction = async (action) => {
+    if (!props.user) return alert("Please login to vote");
     setIsUpdating(true);
 
     const { data, error } = await supabase

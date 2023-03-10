@@ -9,6 +9,7 @@ const FactList = (props) => {
       <ul className="facts-list">
         {props.factList.map((fact) => (
           <Fact
+            user={user}
             factList={props.factList}
             setFactList={props.setFactList}
             key={fact.id}
