@@ -58,6 +58,7 @@ const HomePage = () => {
     try {
       await supabase.auth.signOut();
       setUser(null);
+      setShowForm(false);
 
       alert("You have been signed out");
     } catch (error) {
