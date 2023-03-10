@@ -52,7 +52,7 @@ const HomePage = () => {
       console.log(error);
       setIsLoading(false);
     }
-  }, [currentCategory]);
+  }, [currentCategory, navigate]);
 
   const handleSignout = async () => {
     try {
