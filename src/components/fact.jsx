@@ -6,8 +6,13 @@ const Fact = (props) => {
   return (
     <li className="fact">
       <p>
-        React is being developed by Meta (formerly facebook) &nbsp;
-        <a className="source" href={fact.source}>
+        {fact.text} &nbsp;
+        <a
+          className="source"
+          target="_blank"
+          rel="noreferrer"
+          href={fact.source}
+        >
           (Source)
         </a>
       </p>

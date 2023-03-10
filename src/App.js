@@ -1,23 +1,18 @@
-import { useState } from "react";
-import CategoryFilter from "./components/categoryFilter";
-import FactForm from "./components/factForm";
-import FactList from "./components/factList";
-import Header from "./components/header";
+import HomePage from "./pages/homePage";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+
 import "./style.css";
+import LoginPage from "./pages/loginPage";
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
-
-  const toggleForm = () => setShowForm(!showForm);
-
   return (
     <>
-      <Header formVisible={showForm} formHandler={toggleForm}></Header>
-      {showForm && <FactForm></FactForm>}
-      <main className="main">
-        <CategoryFilter></CategoryFilter>
-        <FactList></FactList>
-      </main>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </Router>
     </>
   );
 }
