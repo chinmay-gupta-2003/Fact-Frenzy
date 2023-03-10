@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 
 const Header = (props) => {
   const navigate = useNavigate();
-
   const btnText = props.formVisible ? "Close" : "Share a fact";
 
   return (
@@ -18,7 +17,7 @@ const Header = (props) => {
             onClick={props.handleSignout}
             className="btn btn-large signout-btn"
           >
-            Signout
+            Logout
           </button>
         ) : (
           <button
@@ -27,7 +26,7 @@ const Header = (props) => {
             }}
             className="btn btn-large login-btn"
           >
-            Signup
+            Login
           </button>
         )}
         <button onClick={props.formHandler} className="btn btn-large show-form">

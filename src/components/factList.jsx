@@ -8,10 +8,19 @@ const FactList = (props) => {
     <section>
       <ul className="facts-list">
         {props.factList.map((fact) => (
-          <Fact key={fact.id} fact={fact}></Fact>
+          <Fact
+            factList={props.factList}
+            setFactList={props.setFactList}
+            key={fact.id}
+            fact={fact}
+          ></Fact>
         ))}
       </ul>
-      <p>There are {numberOfFacts} facts in the database. Add your own!</p>
+      <p>
+        There are {numberOfFacts} facts for
+        <strong> {props.currentCategory.toUpperCase()} </strong> category in the
+        database. Add your own!
+      </p>
     </section>
   );
 };

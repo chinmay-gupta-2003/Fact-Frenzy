@@ -1,37 +1,42 @@
 import React, { useState } from "react";
 import isUrl from "is-url";
-
 import CATEGORIES from "../utils";
+import supabase from "../supabase";
 
 const FactForm = (props) => {
   const [fact, setFact] = useState("");
   const [source, setSource] = useState("");
   const [category, setCategory] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
 
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     // prevent default form submission
     e.preventDefault();
 
+    if (!props.user) return alert("Please login to share a fact");
+
     // validate form data
     if (fact && isUrl(source) && category && fact.length <= 200) {
-      // create form data
-      const formData = {
-        id: Date.now(),
-        text: fact,
-        source,
-        category,
-        votesInteresting: 0,
-        votesMindblowing: 0,
-        votesFalse: 0,
-        createdIn: new Date().getFullYear,
-        userEmail: props.userEmail,
-      };
+      // save form data to supabase
+      setIsUpdating(true);
+
+      const { data: newFact, error } = await supabase
+        .from("facts")
+        .insert([
+          {
+            text: fact,
+            source,
+            category,
+            userEmail: props.userEmail,
+          },
+        ])
+        .select("*");
+
+      setIsUpdating(false);
 
       // update state
-      props.setFactList([formData, ...props.factList]);
-
-      console.log(formData);
-      console.log("valid form data");
+      if (error) return alert("An error occured");
+      props.setFactList([newFact[0], ...props.factList]);
 
       // clear form data
       setFact("");
@@ -46,6 +51,7 @@ const FactForm = (props) => {
   return (
     <form onSubmit={onSubmitHandler} className="fact-form">
       <input
+        disabled={isUpdating}
         required
         value={fact}
         onChange={(e) => setFact(e.target.value)}
@@ -54,6 +60,7 @@ const FactForm = (props) => {
       />
       <span>{200 - fact.length}</span>
       <input
+        disabled={isUpdating}
         required
         value={source}
         onChange={(e) => setSource(e.target.value)}
@@ -61,6 +68,7 @@ const FactForm = (props) => {
         placeholder="Trustworthy source..."
       />
       <select
+        disabled={isUpdating}
         required
         value={category}
         onChange={(e) => setCategory(e.target.value)}
@@ -72,7 +80,10 @@ const FactForm = (props) => {
           </option>
         ))}
       </select>
-      <button className="btn btn-large">Post</button>
+      <button disabled={isUpdating} className="btn btn-large">
+        Post
+      </button>
+      <p>*Your ID will be recorded !</p>
     </form>
   );
 };

@@ -5,11 +5,17 @@ const CategoryFilter = (props) => {
     <aside>
       <ul>
         <li className="category">
-          <button className="btn btn-all-categories">All</button>
+          <button
+            onClick={() => props.setCurrentCategory("all")}
+            className="btn btn-all-categories"
+          >
+            All
+          </button>
         </li>
         {CATEGORIES.map((category) => (
           <li key={category.color} className="category">
             <button
+              onClick={() => props.setCurrentCategory(category.name)}
               className="btn btn-category"
               style={{ backgroundColor: category.color }}
             >

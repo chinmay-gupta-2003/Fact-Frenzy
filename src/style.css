@@ -139,6 +139,11 @@ h1 {
   background-color: #292524;
 }
 
+.vote-buttons button:disabled {
+  background-color: #44403c;
+  cursor: not-allowed;
+}
+
 ul {
   list-style: none;
 }
@@ -197,6 +202,7 @@ ul {
   align-items: center;
   gap: 1.6rem;
   border-radius: 1.6rem;
+  flex-wrap: wrap;
 }
 
 .fact-form input,
@@ -226,9 +232,47 @@ ul {
   text-align: center;
 }
 
+.fact-form p {
+  font-size: 1.8rem;
+  margin: 1rem 0;
+  text-align: center;
+  color: #ff7979;
+  font-weight: 600;
+}
+
 .login-header {
   text-align: center;
   margin-bottom: 2rem;
+}
+
+.loader-text {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: 700;
+}
+
+.disputed-fact {
+  color: #ff7979;
+  font-weight: 600;
+}
+
+::-webkit-scrollbar {
+  width: 1.2rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #44403c;
+  border-radius: 10rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #78716c;
+  border-radius: 10rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a29e;
 }
 
 @media (max-width: 87.5em) {
